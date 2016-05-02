@@ -1,2 +1,29 @@
-# browsersync-electron-gui
-This work is type of POC , which I am going to complete as a Cross browser Synchronized testing tool. Keep subscribed for more updates.
+# sync-tester
+
+> My exceptional app
+
+
+## Dev
+
+```
+$ npm install
+```
+
+### Run
+
+```
+$ npm start
+```
+
+### Build
+
+```
+$ npm run build
+```
+
+Builds the app for OS X, Linux, and Windows, using [electron-packager](https://github.com/maxogden/electron-packager).
+
+
+## License
+
+MIT © [Pawan Gangwani](http://not-decided.com)

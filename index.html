@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sync Tester</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="window">
+        <!--<header class="toolbar toolbar-header">
+            <h1 class="title">Header</h1>
+        </header>-->
+
+        <div class="window-content ">
+            <div class="main-container">
+                <form name="browsersync-form" class="padded-more ">
+                    <div class="form-group">
+                        <label> <strong> Website Url to test</strong></label>
+                        <input name="url" autofocus type="url" class="form-control" required placeholder="Type the url you want to test">
+                    </div>
+                    <div class=" form-group checkbox">
+                        <label class="padded-horizontally-less">
+                            <input name="browser-1" value="google chrome" type="checkbox"> Google Chrome
+                        </label>
+                        <label class="padded-horizontally-less">
+                            <input name="browser-2" value="safari" type="checkbox" name> Safari
+                        </label>
+                        <label class="padded-horizontally-less">
+                            <input name="browser-3" value="firefox" type="checkbox"> FireFox
+                        </label>
+
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="sync-server" class="btn btn-form btn-default" value="start">Start Server</button>
+                    </div>
+                </form>
+                <!--<div class="pane-mini">f</div>-->
+                <label class="red alert padded-less padded-vertically error-message hide" >I am error</label>
+                <label class=" green alert padded-less padded-vertically success-message hide " ></label>
+            </div>
+
+
+        </div>
+
+        <footer class="toolbar toolbar-footer padded">
+            <div class="pull-right">
+                <button id="close-btn" class="btn">Cancel</button>
+            </div>
+
+
+        </footer>
+    </div>
+    <script type="text/javascript" src="build/main.js"></script>
+</body>
+
+</html>
