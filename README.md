@@ -1,7 +1,8 @@
 # sync-tester
 
 > This is an initiative to bring automation in Creative Ui testing (Synchronized testing)
->
+
+> Check  'some-screenshots' folder for how does it look 
 
 
 ## Dev
