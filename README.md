@@ -1,6 +1,7 @@
 # sync-tester
 
-> My exceptional app
+> This is an initiative to bring automation in Creative Ui testing (Synchronized testing)
+>
 
 
 ## Dev

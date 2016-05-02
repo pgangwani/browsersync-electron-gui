@@ -35,7 +35,7 @@ function createMainWindow() {
         height: 300
     });
     // You may toggle comment based on your environment
-    win.openDevTools();
+    //win.openDevTools();
 
 
     if (process.env['NODE_ENV'] == 'dev') {
