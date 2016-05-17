@@ -1,15 +1,9 @@
 // In renderer process (web page).
 
-//const ipcRenderer = electron.ipcRenderer;
 const remote = window.require('remote');
+const ipcRenderer = require('ipc');
 
-
-//const ipcRenderer = window.require('electron').ipcRenderer;
-//const ipc = require('ipc');
-//const ipcMain = require('electron').ipcMain;
-var ipcRenderer = require('ipc');
-
-console.log("app is started!");
+//console.log("app is started!");
 
 
 
@@ -42,7 +36,7 @@ document.querySelector('.form-actions [type="submit"]').addEventListener("click"
             selectedBrowsers.push(item.value);
         }
     }
-    console.log(selectedBrowsers);
+    //console.log(selectedBrowsers);
     
     
     
@@ -80,9 +74,8 @@ document.querySelector('.form-actions [type="submit"]').addEventListener("click"
 
 // Call back for toggleServer-reply
 ipcRenderer.on('toggleServer-reply', function(status,message,bsObj) {
-    console.log('bsObj',bsObj);
-    console.log(status,message);
-    debugger;
+    //console.log('bsObj',bsObj);
+    //console.log(status,message);
     var elSuccessMessage = document.querySelector('.success-message');
     var elButton = document.querySelector('.form-actions [type="submit"]');
     if(status === 'started'){

@@ -3,12 +3,12 @@ const app = require('app');
 const BrowserWindow = require('browser-window');
 //const electron = require('electron');
 const ipcMain = require('ipc');
+const Menu = require("menu");
+
 
 // report crashes to the Electron project
 require('crash-reporter').start();
 
-// adds debug features like hotkeys for triggering dev tools and reload
-require('electron-debug')();
 
 const bs = require('browser-sync').create();
 
@@ -17,6 +17,9 @@ var indexFile = `${__dirname}/index.html`;
 
 if (process.env['NODE_ENV'] == 'dev') {
     indexFile = "http://localhost:9999";
+    
+        // adds debug features like hotkeys for triggering dev tools and reload
+        require('electron-debug')();
 }
 
 
@@ -49,7 +52,29 @@ function createMainWindow() {
 
 
     win.on('closed', onClosed);
+    // Create the Application's main menu
+    const template = [{
+        label: "Sync Tester",
+        submenu: [
+            { label: "About Sync Tester App", selector: "orderFrontStandardAboutPanel:" },
+            { type: "separator" },
+            { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); }}
+        ]}, {
+        label: "Edit",
+        submenu: [
+            { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
+            { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
+            { type: "separator" },
+            { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+            { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+            { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+            { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
+        ]}
+    ];
 
+    Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+    
+    
     return win;
 }
 
@@ -75,20 +100,17 @@ ipcMain.on('closeWindow', function(event, arg) {
         var currentWin = BrowserWindow.getFocusedWindow();
       if(currentWin)
         currentWin.close();
-        console.log(currentWin);
-        debugger;
+        //console.log(currentWin);
         event.sender.send('closeWindow-reply', 'window Closed');
 });
 
 
 // toggle server 
 ipcMain.on('toggleServer', function(event, arg) {
-    console.log('before', bs.active);
-    console.log(arg);
-    debugger;
+    //console.log('before', bs.active);
+    //console.log(arg);
     if (!bs.active && arg.command == 'start') {
         // no server started so lets start
-        debugger;
         bs.init({
             // server:true,
             proxy: arg.url,
@@ -105,7 +127,7 @@ ipcMain.on('toggleServer', function(event, arg) {
 			}
 
         }, function(err, bs) {
-            console.log('bs-active', bs.active);
+            //console.log('bs-active', bs.active);
             if (bs.active) {
 
             }
@@ -113,9 +135,9 @@ ipcMain.on('toggleServer', function(event, arg) {
         });
     }
     else if (arg.command == 'stop') {
-        console.log('server is going to stop');
+        //console.log('server is going to stop');
             bs.exit(function() {
-                console.log('server stopped');
+                //console.log('server stopped');
             });
             event.sender.send('toggleServer-reply', 'stopped', 'Browsersync is stopped!!',bs);
 
